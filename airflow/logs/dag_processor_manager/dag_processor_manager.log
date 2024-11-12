@@ -1,0 +1,38 @@
+[2024-11-12T10:58:12.497+0000] {manager.py:470} INFO - Processing files using up to 2 processes at a time 
+[2024-11-12T10:58:12.498+0000] {manager.py:471} INFO - Process each file at most once every 30 seconds
+[2024-11-12T10:58:12.500+0000] {manager.py:472} INFO - Checking for new files in /opt/airflow/dags every 300 seconds
+[2024-11-12T10:58:12.501+0000] {manager.py:737} INFO - Searching for files in /opt/airflow/dags
+[2024-11-12T10:58:12.512+0000] {manager.py:740} INFO - There are 1 files in /opt/airflow/dags
+[2024-11-12T10:58:12.648+0000] {manager.py:878} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                         PID  Runtime      # DAGs    # Errors  Last Runtime    Last Run
+----------------------------------------------  -----  ---------  --------  ----------  --------------  ----------
+/opt/airflow/dags/download_rocket_launchers.py    165  0.05s             0           0
+================================================================================
+[2024-11-12T10:58:42.813+0000] {manager.py:878} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                       PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+----------------------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/download_rocket_launchers.py                           1           0  0.73s           2024-11-12T10:58:13
+================================================================================
+[2024-11-12T10:59:13.649+0000] {manager.py:878} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                         PID  Runtime      # DAGs    # Errors  Last Runtime    Last Run
+----------------------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/download_rocket_launchers.py    217  0.00s             1           0  0.13s           2024-11-12T10:58:43
+================================================================================
+[2024-11-12T10:59:43.812+0000] {manager.py:878} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                         PID  Runtime      # DAGs    # Errors  Last Runtime    Last Run
+----------------------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/download_rocket_launchers.py    236  0.00s             1           0  0.10s           2024-11-12T10:59:13
+================================================================================
+[2024-11-12T11:00:14.009+0000] {manager.py:452} INFO - Exiting gracefully upon receiving signal 15

@@ -1,0 +1,84 @@
+[2024-11-12T10:58:45.011+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-11-12T10:58:45.053+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: download_rocket_launches.get_pictures manual__2024-11-12T10:58:41.411883+00:00 [queued]>
+[2024-11-12T10:58:45.067+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: download_rocket_launches.get_pictures manual__2024-11-12T10:58:41.411883+00:00 [queued]>
+[2024-11-12T10:58:45.068+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 1
+[2024-11-12T10:58:45.089+0000] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): get_pictures> on 2024-11-12 10:58:41.411883+00:00
+[2024-11-12T10:58:45.098+0000] {logging_mixin.py:188} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:62 DeprecationWarning: This process (pid=194) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2024-11-12T10:58:45.099+0000] {standard_task_runner.py:64} INFO - Started process 195 to run task
+[2024-11-12T10:58:45.098+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'download_rocket_launches', 'get_pictures', 'manual__2024-11-12T10:58:41.411883+00:00', '--job-id', '3', '--raw', '--subdir', 'DAGS_FOLDER/download_rocket_launchers.py', '--cfg-path', '/tmp/tmpsxtj5m48']
+[2024-11-12T10:58:45.101+0000] {standard_task_runner.py:91} INFO - Job 3: Subtask get_pictures
+[2024-11-12T10:58:45.120+0000] {logging_mixin.py:188} WARNING - /home/***/.local/lib/python3.12/site-packages/***/settings.py:195 DeprecationWarning: The sql_alchemy_conn option in [core] has been moved to the sql_alchemy_conn option in [database] - the old setting has been used, but please update your config.
+[2024-11-12T10:58:45.166+0000] {task_command.py:426} INFO - Running <TaskInstance: download_rocket_launches.get_pictures manual__2024-11-12T10:58:41.411883+00:00 [running]> on host f8c19a0963e6
+[2024-11-12T10:58:45.269+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='download_rocket_launches' AIRFLOW_CTX_TASK_ID='get_pictures' AIRFLOW_CTX_EXECUTION_DATE='2024-11-12T10:58:41.411883+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-11-12T10:58:41.411883+00:00'
+[2024-11-12T10:58:45.270+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-11-12T10:59:56.843+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-11-12T10:59:56.844+0000] {taskinstance.py:2905} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/urllib3/response.py", line 710, in _error_catcher
+    yield
+  File "/home/airflow/.local/lib/python3.12/site-packages/urllib3/response.py", line 835, in _raw_read
+    raise IncompleteRead(self._fp_bytes_read, self.length_remaining)
+urllib3.exceptions.IncompleteRead: IncompleteRead(343529 bytes read, 2080140 more expected)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/requests/models.py", line 820, in generate
+    yield from self.raw.stream(chunk_size, decode_content=True)
+  File "/home/airflow/.local/lib/python3.12/site-packages/urllib3/response.py", line 936, in stream
+    data = self.read(amt=amt, decode_content=decode_content)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/urllib3/response.py", line 907, in read
+    data = self._raw_read(amt)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/urllib3/response.py", line 813, in _raw_read
+    with self._error_catcher():
+  File "/usr/local/lib/python3.12/contextlib.py", line 158, in __exit__
+    self.gen.throw(value)
+  File "/home/airflow/.local/lib/python3.12/site-packages/urllib3/response.py", line 727, in _error_catcher
+    raise ProtocolError(f"Connection broken: {e!r}", e) from e
+urllib3.exceptions.ProtocolError: ('Connection broken: IncompleteRead(343529 bytes read, 2080140 more expected)', IncompleteRead(343529 bytes read, 2080140 more expected))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 465, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 401, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 235, in execute
+    return_value = self.execute_callable()
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 252, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/download_rocket_launchers.py", line 42, in _get_pictures
+    response = requests.get(image_url)
+               ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/requests/api.py", line 73, in get
+    return request("get", url, params=params, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/requests/api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/requests/sessions.py", line 746, in send
+    r.content
+  File "/home/airflow/.local/lib/python3.12/site-packages/requests/models.py", line 902, in content
+    self._content = b"".join(self.iter_content(CONTENT_CHUNK_SIZE)) or b""
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/requests/models.py", line 822, in generate
+    raise ChunkedEncodingError(e)
+requests.exceptions.ChunkedEncodingError: ('Connection broken: IncompleteRead(343529 bytes read, 2080140 more expected)', IncompleteRead(343529 bytes read, 2080140 more expected))
+[2024-11-12T10:59:56.856+0000] {taskinstance.py:1206} INFO - Marking task as FAILED. dag_id=download_rocket_launches, task_id=get_pictures, run_id=manual__2024-11-12T10:58:41.411883+00:00, execution_date=20241112T105841, start_date=20241112T105845, end_date=20241112T105956
+[2024-11-12T10:59:56.868+0000] {standard_task_runner.py:110} ERROR - Failed to execute job 3 for task get_pictures (('Connection broken: IncompleteRead(343529 bytes read, 2080140 more expected)', IncompleteRead(343529 bytes read, 2080140 more expected)); 195)
+[2024-11-12T10:59:56.894+0000] {local_task_job_runner.py:243} INFO - Task exited with return code 1
+[2024-11-12T10:59:56.917+0000] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-11-12T10:59:56.922+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

@@ -4,6 +4,7 @@ import airflow
 import airflow.utils
 import airflow.utils.dates
 import requests
+import urllib.request
 import requests.exceptions as requests_exceptions
 
 from airflow import DAG
@@ -41,8 +42,11 @@ def _get_pictures():
                 response = requests.get(image_url)
                 image_filename = image_url.split("/")[-1]
                 target_file = f"/tmp/images/{image_filename}"
-                with open(target_file, "wb") as f:
-                    f.write(response.content)
+                print(f'downloading {image_filename}...')
+                urllib.request.urlretrieve(
+                    url=image_url,
+                    filename=target_file
+                )
                 print(f"Downloaded {image_url} to {target_file}")
             except requests_exceptions.MissingSchema:
                 print(f"{image_url} appears to be an invalid URL")
