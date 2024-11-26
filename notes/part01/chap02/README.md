@@ -2,7 +2,7 @@
 
 John's mental model mapped to tasks in Airflow
 
-![model mapped to tasks](../../img/chap02/john_tasks.png)
+![model mapped to tasks](../img/chap02/john_tasks.png)
 
 ### 2.2.1 - Tasks vs. operators
 
@@ -14,7 +14,7 @@ The terms `operator` and `task` used interchangeably, they refer to the same thi
 
 The user can focus on the work to be done by using operators, while Airflow ensures correct execution of the work via tasks
 
-![operator vs task](../../img/chap02/operator_vs_task.png)
+![operator vs task](../img/chap02/operator_vs_task.png)
 
 ### 2.3.2 - Running Airflow in Docker containers
 

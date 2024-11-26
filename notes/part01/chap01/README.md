@@ -16,7 +16,7 @@ Example: Build a small weather dashboard:
 
 Tasks are represented as nodes in the graph, while dependencies between tasks are represented by directed edges between the task nodes (_directed graph_)
 
-![weather graph](../../img/weather_graphs.png)
+![weather graph](../img/chap01/weather_graphs.png)
 
 This type of graph is typically called a _directed acyclic graph_(DAG), as the graph contains _directed_ edges and does not contain any loops or cycles (_acyclic_)
 
@@ -28,19 +28,19 @@ Algorithm for running the pipeline
 - Execute the tasks in the execution queue, marking them completed once they finish performing their work
 - Jump back to step 1 and repeat until all tasks in the graph have been completed
 
-![weather dags](../../img/weather_dags.png)
+![weather dags](../img/chap01/weather_dags.png)
 
 ### 1.1.3 - Pipeline graphs vs. sequential scripts
 
 Advantages of the graph-based approach
 
-![forecast dags](../../img/forecast_dags.png)
+![forecast dags](../img/chap01/forecast_dags.png)
 
 In the graph representation, we need only to rerun any failing tasks (and any downstream dependencies).
 
 ### 1.1.4 - Running pipeline using workflow managers
 
-![workflow managers](../../img/workflow_managers.png)
+![workflow managers](../img/chap01/workflow_managers.png)
 
 ## 1.2 - Introducing Airflow
 
@@ -48,7 +48,7 @@ In the graph representation, we need only to rerun any failing tasks (and any do
 
 Each DAG file typically describes the set of tasks for a given DAG and the dependencies between the tasks, which are then parsed by Airflow to identify the DAG structure
 
-![dag file generation](../../img/dag_file_generation.png)
+![dag file generation](../img/chap01/dag_file_generation.png)
 
 Advantage: This programmatic approach provides a lot of flexibility:
 - Example: Tou can use Python code to dynamically generate optional tasks depending on certain conditions or even generate entire DAGs based on external metadata or configuration files
@@ -63,23 +63,23 @@ Airflow is organized into three main components
 
 - _The Airflow webserver_ — Visualizes the DAGs parsed by the scheduler and provides the main interface for users to monitor DAG runs and their results.
 
-![airflow main components](../../img/airflow_main_components.png)
+![airflow main components](../img/chap01/airflow_main_components.png)
 
 The heart of Airflow is arguably the scheduler
 
-![airflow scheduler](../../img/airflow_scheduler.png)
+![airflow scheduler](../img/chap01/airflow_scheduler.png)
 
 Once tasks have been queued for execution, they are picked up by a pool of Airflow workers that execute tasks in parallel and track their results. These results are communicated to Airflow’s metastore so that users can track the progress of tasks and view their logs using the Airflow web interface (provided by the Airflow webserver)
 
 ### 1.2.3 - Monitoring and handling failures
 
-![webserver ui](../../img/airflow_webserver_ui.png)
+![](../img/chap01/airflow_webserver_ui.png)
 
 In addition to scheduing and executing DAGs, Airflow also provides an extensive web interface that can be used for viewing DAGs and monitoring the results of DAGs runs
 
 ### 1.2.4 - Incremental loading and backfilling
 
-![schedule intervals](../../img/schedule_intervals.png)
+![](../img/chap01/schedule_intervals.png)
 
 In these incremental pipelines, each DAG run processes only data for the corresponding time slot (the data's _delta_)
 
